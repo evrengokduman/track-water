@@ -3,6 +3,8 @@ const liters = document.getElementById('liters')
 const percentage = document.getElementById('percentage')
 const remained = document.getElementById('remained')
 
+updateBigCup()
+
 //take all the small cups and loop through them
 // add an event listener to each cup
 // when the cup is clicked, then the cup is filled with water
@@ -27,4 +29,23 @@ function highLightCups(idx) {
       cup.classList.remove('full')
     }
   })
+  updateBigCup()
+}
+// update the big cup
+// the big cup is updated based on the number of small cups that are filled
+// the percentage of the big cup is updated based on the number of small cups that are filled
+// the remained number of the big cup is updated based on the number of small cups that are filled
+function updateBigCup() {
+  const fullCups = document.querySelectorAll('.cup-small.full').length
+  const totalCups = smallCups.length
+  console.log(totalCups)
+
+  if (fullCups === 0) {
+    percentage.style.visibility = 'hidden'
+    percentage.style.height = 0
+  } else {
+    percentage.style.visibility = 'visible'
+    percentage.style.height = `${(fullCups / totalCups) * 330}px`
+    percentage.innerText = `${(fullCups / totalCups) * 100}%`
+  }
 }
