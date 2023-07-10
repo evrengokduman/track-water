@@ -35,12 +35,10 @@ function highLightCups(idx) {
 // the big cup is updated based on the number of small cups that are filled
 // the percentage of the big cup is updated based on the number of small cups that are filled
 // the remained number of the big cup is updated based on the number of small cups that are filled
-
 function updateBigCup() {
   const fullCups = document.querySelectorAll('.cup-small.full').length
-
   const totalCups = smallCups.length
-  console.log(`This is the number of full cups ${totalCups} `)
+  console.log(totalCups)
 
   if (fullCups === 0) {
     percentage.style.visibility = 'hidden'
@@ -48,18 +46,6 @@ function updateBigCup() {
   } else {
     percentage.style.visibility = 'visible'
     percentage.style.height = `${(fullCups / totalCups) * 330}px`
-    percentage.innerText = `${(fullCups / totalCups) * 100} %`
-  }
-
-  if (fullCups === totalCups) {
-    remained.style.visibility = 'hidden'
-    remained.style.height = 0
-  } else {
-    remained.style.visibility = 'visible'
-    const goalInput = document.getElementById('goal')
-    goalInput.addEventListener('input', updateBigCup)
-    const goalLiters = parseFloat(goalInput.value)
-    const remainingLiters = goalLiters - (250 * fullCups) / 1000
-    liters.innerText = `${remainingLiters} L `
+    percentage.innerText = `${(fullCups / totalCups) * 100}%`
   }
 }
