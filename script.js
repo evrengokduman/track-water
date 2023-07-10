@@ -56,6 +56,10 @@ function updateBigCup() {
     remained.style.height = 0
   } else {
     remained.style.visibility = 'visible'
-    liters.innerText = `${(2000 - 250 * fullCups) / 1000} L `
+    const goalInput = document.getElementById('goal')
+    goalInput.addEventListener('input', updateBigCup)
+    const goalLiters = parseFloat(goalInput.value)
+    const remainingLiters = goalLiters - (250 * fullCups) / 1000
+    liters.innerText = `${remainingLiters} L `
   }
 }
