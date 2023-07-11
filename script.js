@@ -17,7 +17,7 @@ smallCups.forEach((cup, idx) => {
 function highLightCups(idx) {
   if (
     smallCups[idx].classList.contains('full') &&
-    !smallCups[idx].nextElementSibling.classList.contains('full')
+    !smallCups[idx].nextElementSibling?.classList.contains('full')
   ) {
     idx--
   }
